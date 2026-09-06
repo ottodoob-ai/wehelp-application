@@ -20,6 +20,9 @@
     .closing{padding:124px 32px 132px;text-align:center}.closing h2{margin:0 auto 24px}.closing p{max-width:660px;margin:0 auto;color:var(--muted);font-size:18px;line-height:1.72}footer{padding:20px;color:#86868b;border-top:1px solid var(--line);font-size:12px;text-align:center}
     @media(max-width:720px){nav{width:min(100% - 24px,1120px);margin-top:10px}.links{display:none}main{width:100%}.hero{min-height:544px;padding:104px 26px 66px;border-radius:0 0 30px 30px}.stats{grid-template-columns:1fr;margin:-28px 20px 0}.stat{display:grid;grid-template-columns:92px 1fr;align-items:center;padding:18px 22px}.num{margin:0;font-size:28px}.content{padding:79px 20px 12px}.heading,.story{grid-template-columns:1fr;gap:12px}.heading{margin-bottom:23px}.section-no{padding-top:0}.story{padding:29px 0 44px}.copy p{font-size:17px}.skills,.schedule{grid-template-columns:1fr}.skill{min-height:auto;padding:23px 24px;border-radius:20px}.focus,.weekend,.quote,.vision{padding:29px 26px;border-radius:24px}.closing{padding:83px 12px 90px}}
   </style>
+  <style>
+    .heading .question,.heading h2{grid-column:2}.question{margin:0 0 13px;color:var(--blue);font-size:15px;font-weight:650;line-height:1.4}(max-width:720px){.heading .question,.heading h2{grid-column:1}}
+  </style>
 </head>
 <body>
   <div class="shell">
@@ -39,5 +42,21 @@
     </main>
     <footer>WEHELP APPLICATION · AI × SOFTWARE ENGINEERING</footer>
   </div>
+  <script>
+    const questions=["個人簡介和申請動機。","曾經學過哪些軟體工程相關技術？","如果參與訓練，會怎麼安排時間？","分享一件負面情緒經歷，如何處理？","最想使用 AI 技術解決什麼問題？","如何看待 AI 對軟體工程師的影響？"];
+    document.querySelectorAll(".story").forEach((section,index)=>{
+      const heading=section.querySelector(".heading");
+      const question=document.createElement("p");
+      question.className="question";
+      question.textContent=`問題 ${String(index+1).padStart(2,"0")}｜${questions[index]}`;
+      heading.querySelector("h2").before(question);
+    });
+    const closing=document.querySelector(".closing");
+    const closingQuestion=document.createElement("p");
+    closingQuestion.className="eyebrow";
+    closingQuestion.textContent="問題 07｜其他想要對我們說的事情？";
+    closing.querySelector("h2").before(closingQuestion);
+    closing.querySelector(".eyebrow").remove();
+  </script>
 </body>
 </html>
